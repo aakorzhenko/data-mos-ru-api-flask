@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>My cool flask page</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"> </script> {# подключает библиотеку gquerry #}
 </head>
 <body>
 <h1> Welcome to this site!</h1>
@@ -13,8 +14,24 @@
 n = loop.index0) }}">
            {{ row['Cells']['Name'] }}
         </a>
+        <button data-index="{{ loop.index0 }}" class="preview_button">
+            preview
+        </button> {# {{ нужно подставить значение переменной #}
     </li>
-    {% endfor %}
+    {% endfor %} {# шаблонизатор получал на вход список строчек переменной data для каждой строчки создавал li #}
 </ul>
+<script>
+        function show_picture(index) {
+            alert(index)
+        }
+
+        $(document).ready(function() {
+            $(".preview_button").click(
+                function () {
+                    show_picture($(this).data('index'))
+                }) {# все элементы данного класса - это обозначает точечка решетка - запрашиваем по id  #}
+        })
+
+</script>
 </body>
 </html>
